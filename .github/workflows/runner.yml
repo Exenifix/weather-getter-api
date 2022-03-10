@@ -1,0 +1,25 @@
+name: Docker Runner
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: docker build -t weather-api .
+
+      - name: Kill Previous Container
+        continue-on-error: true
+        run: docker rm -f weather-api
+
+      - name: Start Docker Container
+        run: docker run -d -e TOKEN=$TOKEN -e PORT=8080 --name weather-api weather-api:latest
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
