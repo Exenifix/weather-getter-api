@@ -20,6 +20,6 @@ jobs:
         run: docker rm -f weather-api
 
       - name: Start Docker Container
-        run: docker run -d -p 8080:8080 -e TOKEN=$TOKEN -e PORT=8080 --name weather-api weather-api:latest
+        run: docker run -d -p 5001:5001 -e TOKEN=$TOKEN -e PORT=5001 --name weather-api weather-api:latest
         env:
           TOKEN: ${{ secrets.TOKEN }}
