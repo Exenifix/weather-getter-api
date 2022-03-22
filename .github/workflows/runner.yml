@@ -29,7 +29,9 @@ jobs:
     needs: build
 
     steps:
-      - uses: actions/checkout@v2
+
+      - name: Update Requirements
+        run: pip3 install -U pytest pytest-asyncio
 
       - name: Run Tests
         run: pytest tests/
