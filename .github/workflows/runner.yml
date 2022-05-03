@@ -20,7 +20,7 @@ jobs:
         run: docker rm -f weather-api
 
       - name: Start Docker Container
-        run: docker run -d -p 5001:5001 -e APIKEY=$APIKEY -e PORT=5001 --name weather-api weather-api:latest
+        run: docker run -d -p 4001:4001 -e APIKEY=$APIKEY -e PORT=4001 --name weather-api weather-api:latest
         env:
           APIKEY: ${{ secrets.TOKEN }}
 

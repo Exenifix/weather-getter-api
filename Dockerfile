@@ -1,10 +1,14 @@
 FROM python:3.10-bullseye
 
-COPY . /app
+EXPOSE 4001
+
+ENV VIRTUAL_ENV=/app/venv
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 WORKDIR /app
+COPY requirements.txt .
+RUN pip install requirements.txt
 
-EXPOSE 5001
-
-RUN pip install -U pip
-RUN pip install -r requirements.txt
+COPY . .
 CMD ["python", "api.py"]
