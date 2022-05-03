@@ -31,7 +31,7 @@ jobs:
     steps:
 
       - name: Update Requirements
-        run: pip3 install -U pytest pytest-asyncio
+        run: pip3 install -U pytest pytest-asyncio aiohttp
 
       - name: Run Tests
-        run: pytest tests/
+        run: python3 -m pytest tests/
