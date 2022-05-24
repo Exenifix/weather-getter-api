@@ -1,8 +1,7 @@
 name: Docker Runner
 
 on:
-  push:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
